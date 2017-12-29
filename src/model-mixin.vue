@@ -154,8 +154,9 @@ export default {
             }
         }
 
-        this.renderer = new WebGLRenderer( { antialias: true, alpha: true, canvas: this.$refs.canvas,preserveDrawingBuffer: true } )
+        this.renderer = new WebGLRenderer( { antialias: true, alpha: true, canvas: this.$refs.canvas, preserveDrawingBuffer: true } )
         this.renderer.shadowMap.enabled = true;
+        this.render.preserveDrawingBuffer=true;
 
         this.scene.add( this.wrapper )
 
