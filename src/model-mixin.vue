@@ -497,7 +497,7 @@ export default {
                 // load a resource
                 loader.load(
                     // resource URL
-                    '/static/sorriso.jpg',
+                    '/statics/sorriso.jpg',
 
                     // onLoad callback
                      ( texture )=> {

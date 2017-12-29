@@ -46888,7 +46888,7 @@ var suportWebGL = function () {
 
             var loader = new __WEBPACK_IMPORTED_MODULE_0_three__["_12" /* TextureLoader */]();
 
-            loader.load('/static/sorriso.jpg', function (texture) {
+            loader.load('/statics/sorriso.jpg', function (texture) {
                 texture.minFilter = __WEBPACK_IMPORTED_MODULE_0_three__["u" /* LinearFilter */];
 
                 var material = new __WEBPACK_IMPORTED_MODULE_0_three__["j" /* MeshBasicMaterial */]({
