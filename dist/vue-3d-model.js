@@ -46863,7 +46863,7 @@ var suportWebGL = function () {
 
                 this.wrapper.remove(this.object);
             }
-
+            this.addBg();
             this.loader.load(this.src, function () {
 
                 var object = _this3.getObject.apply(_this3, arguments);
@@ -46873,8 +46873,6 @@ var suportWebGL = function () {
                 }
 
                 _this3.addObject(object);
-
-                _this3.addBg();
 
                 _this3.$emit('on-load');
             }, function (xhr) {
