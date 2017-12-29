@@ -1,10 +1,11 @@
 <template>
     <demo-block :vue-code="code" :html-code="htmlCode">
         <template slot="preview">
-            <model-stl :backgroundAlpha="0"
+            <model-stl 
                 @on-load="onLoad"
                 src="static/models/stl/gear.stl"
                 :material="{opacity:0.5}"
+                backgroundAlpha.number="0.1"
                 ></model-stl>
             <div class="example-loading" v-show="loading"></div>
         </template>

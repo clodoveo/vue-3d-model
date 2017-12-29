@@ -25,6 +25,7 @@ import {
     HemisphereLight,
     DirectionalLight
 } from 'three'
+import * as THREE from 'three'
 import { getSize, getCenter } from './util'
 import { OrbitControls } from './controls/OrbitControls'
 
@@ -471,6 +472,12 @@ export default {
 
                 this.addObject( object )
 
+
+                //this.addBg();
+
+
+
+
                 this.$emit( 'on-load' );
 
             }, xhr => {
@@ -483,6 +490,50 @@ export default {
 
             } );
 
+        },
+            addBg(){
+            var loader = new THREE.TextureLoader();
+
+                // load a resource
+                loader.load(
+                    // resource URL
+                    '/static/sorriso.jpg',
+
+                    // onLoad callback
+                     ( texture )=> {
+                         texture.minFilter = THREE.LinearFilter
+                        // in this example we create the material when the texture is loaded
+                        var material = new THREE.MeshBasicMaterial( {
+                            map: texture
+                        } );
+
+
+                         var backgroundMesh = new THREE.Mesh(
+                            new THREE.PlaneGeometry(2, 2, 0),  material);
+
+                        backgroundMesh.material.depthTest = false;
+                        backgroundMesh.material.depthWrite = false;
+
+                        // Create your background scene
+                        var backgroundScene = new THREE.Scene();
+                        var backgroundCamera = new THREE.Camera();
+                        backgroundScene.add(backgroundCamera );
+                        backgroundScene.add(backgroundMesh );
+                        this.renderer.autoClear = false;
+                         this.renderer.clear();
+                        this.renderer.render(backgroundScene , backgroundCamera );
+                        //console.log(backgroundScene)
+                        
+                    },
+
+                    // onProgress callback currently not supported
+                    undefined,
+
+                    // onError callback
+                    function ( err ) {
+                        console.error( 'An error happened.' );
+                    }
+                );
         },
         getObject( object ) {
 
@@ -502,6 +553,7 @@ export default {
             this.updateCamera()
             this.updateModel()
             
+            
         },
         animate () {
             requestAnimationFrame( this.animate );
@@ -509,7 +561,11 @@ export default {
         },
         render () {
 
+
+           
             this.renderer.render( this.scene, this.camera )
+            
+             this.addBg()
 
         }
     }
