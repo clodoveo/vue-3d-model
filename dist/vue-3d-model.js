@@ -46520,6 +46520,14 @@ var suportWebGL = function () {
         controllable: {
             type: Boolean,
             default: true
+        },
+        material: {
+            type: Object,
+            default: function _default() {
+                return {
+                    opacity: 1
+                };
+            }
         }
     },
     data: function data() {
@@ -46594,6 +46602,13 @@ var suportWebGL = function () {
             this.load();
         },
 
+        opacity: {
+            deep: true,
+            handler: function handler(val) {
+                if (!this.object) return;
+                this.object.material.set(val);
+            }
+        },
         rotation: {
             deep: true,
             handler: function handler(val) {

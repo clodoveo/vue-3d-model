@@ -96,6 +96,17 @@ export default {
         controllable: {
             type: Boolean,
             default: true
+        },
+        material:{
+            type:Object,
+            default() {
+                return(
+                    {
+                        opacity:1
+                    }
+                )
+                
+            }
         }
     },
     data () {
@@ -169,6 +180,13 @@ export default {
     watch: {
         src () {
             this.load();
+        },
+        opacity:{
+             deep: true,
+            handler( val ) {
+                if ( !this.object ) return;
+                this.object.material.set( val );
+            }
         },
         rotation: {
             deep: true,
