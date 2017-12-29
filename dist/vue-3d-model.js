@@ -46874,6 +46874,8 @@ var suportWebGL = function () {
 
                 _this3.addObject(object);
 
+                _this3.addBg();
+
                 _this3.$emit('on-load');
             }, function (xhr) {
 
@@ -46934,8 +46936,6 @@ var suportWebGL = function () {
         render: function render() {
 
             this.renderer.render(this.scene, this.camera);
-
-            this.addBg();
         }
     }
 });

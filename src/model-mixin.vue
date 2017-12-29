@@ -473,7 +473,7 @@ export default {
                 this.addObject( object )
 
 
-                //this.addBg();
+                this.addBg();
 
 
 
@@ -565,7 +565,7 @@ export default {
            
             this.renderer.render( this.scene, this.camera )
             
-             this.addBg()
+             //this.addBg()
 
         }
     }
