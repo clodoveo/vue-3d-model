@@ -46590,6 +46590,7 @@ var suportWebGL = function () {
         this.$el.addEventListener('click', this.onClick, false);
 
         this.animate();
+        this.addBg();
     },
     beforeDestroy: function beforeDestroy() {
 
@@ -46863,7 +46864,7 @@ var suportWebGL = function () {
 
                 this.wrapper.remove(this.object);
             }
-            this.addBg();
+
             this.loader.load(this.src, function () {
 
                 var object = _this3.getObject.apply(_this3, arguments);

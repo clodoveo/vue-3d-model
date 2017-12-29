@@ -170,6 +170,7 @@ export default {
         this.$el.addEventListener( 'click', this.onClick, false );
 
         this.animate();
+         this.addBg();
     },
     beforeDestroy () {
 
@@ -461,7 +462,7 @@ export default {
                 this.wrapper.remove( this.object );
 
             }
-             this.addBg();
+            
             this.loader.load( this.src, ( ...args ) => {
 
                 const object = this.getObject( ...args )
