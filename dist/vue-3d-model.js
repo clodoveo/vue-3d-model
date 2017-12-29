@@ -46590,7 +46590,6 @@ var suportWebGL = function () {
         this.$el.addEventListener('click', this.onClick, false);
 
         this.animate();
-        this.addBg();
     },
     beforeDestroy: function beforeDestroy() {
 
@@ -46935,6 +46934,8 @@ var suportWebGL = function () {
         render: function render() {
 
             this.renderer.render(this.scene, this.camera);
+
+            this.addBg();
         }
     }
 });

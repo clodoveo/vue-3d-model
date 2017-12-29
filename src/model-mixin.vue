@@ -170,7 +170,7 @@ export default {
         this.$el.addEventListener( 'click', this.onClick, false );
 
         this.animate();
-         this.addBg();
+
     },
     beforeDestroy () {
 
@@ -566,7 +566,7 @@ export default {
            
             this.renderer.render( this.scene, this.camera )
             
-             //this.addBg()
+             this.addBg()
 
         }
     }
