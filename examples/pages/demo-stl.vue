@@ -3,7 +3,9 @@
         <template slot="preview">
             <model-stl :backgroundAlpha="0"
                 @on-load="onLoad"
-                src="static/models/stl/gear.stl"></model-stl>
+                src="static/models/stl/gear.stl"
+                :material="{opacity:0.5}"
+                ></model-stl>
             <div class="example-loading" v-show="loading"></div>
         </template>
     </demo-block>
@@ -15,7 +17,7 @@ import ModelStl from '../../src/model-stl.vue'
 
 const code = `
 <template>
-    <model-stl src="static/models/stl/slotted_disk.stl"></model-stl>
+    <model-stl src="static/models/stl/slotted_disk.stl" "></model-stl>
 </template>
 
 <script>

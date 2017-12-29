@@ -10,6 +10,13 @@ export default {
     name: 'model-stl',
     mixins: [ mixin ],
     props: {
+        material:{
+            type:Object,
+            default(){
+                return {opacity:0.3}
+                }
+        },
+
         lights: {
             type: Array,
             default () {
@@ -38,8 +45,9 @@ export default {
     },
     methods: {
         getObject( geometry ) {
+            console.log (this.material)
 
-            return new Mesh( geometry, new MeshPhongMaterial() )
+            return new Mesh( geometry, new MeshPhongMaterial(this.material) )
 
         }
     }
