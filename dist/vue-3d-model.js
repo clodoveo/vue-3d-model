@@ -46574,7 +46574,7 @@ var suportWebGL = function () {
             };
         }
 
-        this.renderer = new __WEBPACK_IMPORTED_MODULE_0_three__["_44" /* WebGLRenderer */]({ antialias: true, alpha: true, canvas: this.$refs.canvas });
+        this.renderer = new __WEBPACK_IMPORTED_MODULE_0_three__["_44" /* WebGLRenderer */]({ antialias: true, alpha: true, canvas: this.$refs.canvas, preserveDrawingBuffer: true });
         this.renderer.shadowMap.enabled = true;
 
         this.scene.add(this.wrapper);
