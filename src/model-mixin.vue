@@ -126,7 +126,9 @@ export default {
             renderer: null,
             controls: null,
             allLights: [],
-            clock: typeof performance === 'undefined' ? Date : performance
+            clock: typeof performance === 'undefined' ? Date : performance,
+            bgScene:{},
+            bgCamera:{}
         }
     },
     computed: {
@@ -147,7 +149,7 @@ export default {
         window.addEventListener( 'resize', this.onResize, false );
     },
     mounted () {
-
+        this.addBg();
         if ( this.width === undefined || this.height === undefined ) {
             this.size = {
                 width: this.$el.offsetWidth,
@@ -156,6 +158,7 @@ export default {
         }
 
         this.renderer = new WebGLRenderer( { antialias: true, alpha: true, canvas: this.$refs.canvas, preserveDrawingBuffer: true } )
+        this.renderer.autoClear = false;
         this.renderer.shadowMap.enabled = true;
         this.render.preserveDrawingBuffer=true;
 
@@ -301,11 +304,12 @@ export default {
 
         },
         update () {
-
+            //return;
             this.updateRenderer();
             this.updateCamera();
             this.updateLights();
             this.updateControls();
+            
             
         },
         updateModel () {
@@ -520,9 +524,12 @@ export default {
                         var backgroundCamera = new THREE.Camera();
                         backgroundScene.add(backgroundCamera );
                         backgroundScene.add(backgroundMesh );
-                        this.renderer.autoClear = false;
-                         this.renderer.clear();
-                        this.renderer.render(backgroundScene , backgroundCamera );
+
+                        this.bgScene= backgroundScene;
+                        this.bgCamera=backgroundCamera;
+                        //this.renderer.autoClear = false;
+                        //this.renderer.clear();
+                        
                         //console.log(backgroundScene)
                         
                     },
@@ -561,12 +568,13 @@ export default {
             this.render();
         },
         render () {
+            this.renderer.clear();
 
-
-           
+            this.renderer.render(this.bgScene,this.bgCamera ) 
+            this.renderer.clearDepth(); 
             this.renderer.render( this.scene, this.camera )
-            
-             this.addBg()
+                //this.renderer.autoClear = false;
+                //this.renderer.clear();
 
         }
     }

@@ -46547,7 +46547,9 @@ var suportWebGL = function () {
             renderer: null,
             controls: null,
             allLights: [],
-            clock: typeof performance === 'undefined' ? Date : performance
+            clock: typeof performance === 'undefined' ? Date : performance,
+            bgScene: {},
+            bgCamera: {}
         };
     },
 
@@ -46567,7 +46569,7 @@ var suportWebGL = function () {
         window.addEventListener('resize', this.onResize, false);
     },
     mounted: function mounted() {
-
+        this.addBg();
         if (this.width === undefined || this.height === undefined) {
             this.size = {
                 width: this.$el.offsetWidth,
@@ -46576,6 +46578,7 @@ var suportWebGL = function () {
         }
 
         this.renderer = new __WEBPACK_IMPORTED_MODULE_0_three__["_44" /* WebGLRenderer */]({ antialias: true, alpha: true, canvas: this.$refs.canvas, preserveDrawingBuffer: true });
+        this.renderer.autoClear = false;
         this.renderer.shadowMap.enabled = true;
         this.render.preserveDrawingBuffer = true;
 
@@ -46716,7 +46719,6 @@ var suportWebGL = function () {
             return (intersects && intersects.length) > 0 ? intersects[0] : null;
         },
         update: function update() {
-
             this.updateRenderer();
             this.updateCamera();
             this.updateLights();
@@ -46904,9 +46906,9 @@ var suportWebGL = function () {
                 var backgroundCamera = new __WEBPACK_IMPORTED_MODULE_0_three__["_47" /* Camera */]();
                 backgroundScene.add(backgroundCamera);
                 backgroundScene.add(backgroundMesh);
-                _this4.renderer.autoClear = false;
-                _this4.renderer.clear();
-                _this4.renderer.render(backgroundScene, backgroundCamera);
+
+                _this4.bgScene = backgroundScene;
+                _this4.bgCamera = backgroundCamera;
             }, undefined, function (err) {
                 console.error('An error happened.');
             });
@@ -46932,10 +46934,11 @@ var suportWebGL = function () {
             this.render();
         },
         render: function render() {
+            this.renderer.clear();
 
+            this.renderer.render(this.bgScene, this.bgCamera);
+            this.renderer.clearDepth();
             this.renderer.render(this.scene, this.camera);
-
-            this.addBg();
         }
     }
 });
