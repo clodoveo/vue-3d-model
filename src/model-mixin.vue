@@ -312,7 +312,7 @@ export default {
             
         },
         updateModel () {
-
+            console.log(this.object.matrials);
             const object = this.object;
 
             if ( !object ) return;
@@ -325,7 +325,8 @@ export default {
             object.position.set( position.x, position.y, position.z );
             object.rotation.set( rotation.x, rotation.y, rotation.z );
             object.scale.set( scale.x, scale.y, scale.z );
-            object.material.set(material);
+            object.materials[0]=material;
+            object.materials[0].transparent = true;
 
         },
         updateRenderer () {
