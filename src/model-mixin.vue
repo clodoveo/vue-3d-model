@@ -182,7 +182,7 @@ export default {
         src () {
             this.load();
         },
-        opacity:{
+        material:{
              deep: true,
             handler( val ) {
                 if ( !this.object ) return;
