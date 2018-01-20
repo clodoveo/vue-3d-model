@@ -185,9 +185,11 @@ export default {
         material:{
              deep: true,
             handler( val ) {
-                console.log(val);
+                console.log('passedMaterial',val);
+                console.log('object', this.object);
+      
                 if ( !this.object ) return;
-                this.object.material.set( val );
+                this.object.material[0].set( val );
                 this.updateCamera();
                 this.updateRenderer();
             }
