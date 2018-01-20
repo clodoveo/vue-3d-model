@@ -185,6 +185,7 @@ export default {
         material:{
              deep: true,
             handler( val ) {
+                console.log(val);
                 if ( !this.object ) return;
                 this.object.material.set( val );
                 this.updateCamera();
