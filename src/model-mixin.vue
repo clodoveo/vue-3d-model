@@ -315,10 +315,12 @@ export default {
             const position = this.position;
             const rotation = this.rotation;
             const scale = this.scale;
+            const material=this.material;
 
             object.position.set( position.x, position.y, position.z );
             object.rotation.set( rotation.x, rotation.y, rotation.z );
             object.scale.set( scale.x, scale.y, scale.z );
+            object.material.set(material);
 
         },
         updateRenderer () {
