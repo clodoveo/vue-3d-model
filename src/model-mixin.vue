@@ -187,6 +187,8 @@ export default {
             handler( val ) {
                 if ( !this.object ) return;
                 this.object.material.set( val );
+                this.updateCamera();
+                this.updateRenderer();
             }
         },
         rotation: {
